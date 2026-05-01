@@ -93,31 +93,28 @@ export default function ResultPage() {
       <div style={{
         border: `2px solid ${rankInfo.color}`,
         borderRadius: 20,
-        padding: '20px',
+        padding: '24px 20px',
         marginBottom: 14,
         textAlign: 'center' as const,
         background: 'rgba(255,255,255,0.04)',
         boxShadow: `0 0 24px ${rankInfo.color}40`,
       }}>
-        <p style={{ fontSize: 12, color: '#D8B4FE', marginBottom: 12, letterSpacing: '0.08em' }}>SNS売上ポテンシャル診断ランク</p>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 12 }}>
-          {['SS','S','A','B','C','D','E'].map(r => (
-            <div key={r} style={{
-              width: r === rankInfo.rank ? 48 : 30,
-              height: r === rankInfo.rank ? 48 : 30,
-              borderRadius: '50%',
-              background: r === rankInfo.rank ? rankInfo.color : 'rgba(255,255,255,0.06)',
-              border: r === rankInfo.rank ? `2px solid ${rankInfo.color}` : '1px solid rgba(255,255,255,0.1)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: r === rankInfo.rank ? 16 : 11,
-              fontWeight: r === rankInfo.rank ? 900 : 400,
-              color: r === rankInfo.rank ? '#000' : '#D8B4FE',
-              boxShadow: r === rankInfo.rank ? `0 0 20px ${rankInfo.color}` : 'none',
-              flexShrink: 0,
-            }}>
-              {r}
-            </div>
-          ))}
+        <p style={{ fontSize: 12, color: '#D8B4FE', marginBottom: 16, letterSpacing: '0.08em' }}>SNS売上ポテンシャル診断ランク</p>
+        <div style={{
+          width: 100,
+          height: 100,
+          borderRadius: '50%',
+          background: rankInfo.color,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '0 auto 16px',
+          boxShadow: `0 0 40px ${rankInfo.color}`,
+          fontSize: 48,
+          fontWeight: 900,
+          color: '#000',
+        }}>
+          {rankInfo.rank}
         </div>
         <p style={{ fontSize: 15, color: rankInfo.color, fontWeight: 700 }}>{rankInfo.message}</p>
       </div>
