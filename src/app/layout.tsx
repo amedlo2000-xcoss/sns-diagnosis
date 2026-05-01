@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SNS Diagnosis",
-  description: "Diagnose your SNS usage habits",
+  title: 'SNS売上診断｜無料30秒',
+  description: 'あなたのSNSが売上に繋がらない原因を30秒で診断します。完全無料・スマホ完結。',
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
+  },
 };
 
 export default function RootLayout({
@@ -13,12 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body>
-        <header className="container">
-          <h1>SNS Diagnosis</h1>
-        </header>
-        <main>{children}</main>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
