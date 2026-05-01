@@ -6,6 +6,17 @@ import type { DiagnosisResult } from '@/lib/types';
 const LINE_URL = 'https://lin.ee/6fub10f';
 const TYPE_EMOJI: Record<string,string> = { '導線不足タイプ':'🔗','投稿迷子タイプ':'🗺️','商品設計不足タイプ':'📦','継続困難タイプ':'⏳','自動化未導入タイプ':'⚙️' };
 
+const getRank = (type: string) => {
+  const map: Record<string, { rank: string; color: string; message: string }> = {
+    '自動化未導入タイプ': { rank: 'A', color: '#00FF88', message: '導線は整っている。次は自動化です' },
+    '導線不足タイプ':     { rank: 'B', color: '#38BDF8', message: '投稿の方向性は合っている。導線強化が必要' },
+    '投稿迷子タイプ':     { rank: 'C', color: '#FFE066', message: '発信力はある。商品・導線の見直しを' },
+    '商品設計不足タイプ': { rank: 'D', color: '#FF9B5E', message: '基盤づくりが先決。焦らず設計を' },
+    '継続困難タイプ':     { rank: 'E', color: '#FF4ECD', message: '今が一番伸びしろがある段階です' },
+  };
+  return map[type] ?? { rank: 'C', color: '#FFE066', message: '発信力はある。商品・導線の見直しを' };
+};
+
 export default function ResultPage() {
   const router = useRouter();
   const [result, setResult] = useState<DiagnosisResult|null>(null);
@@ -67,6 +78,7 @@ export default function ResultPage() {
   );
 
   const emoji = TYPE_EMOJI[result.type]??'📊';
+  const rankInfo = getRank(result.type);
 
   return (
     <main style={s.main}>
@@ -77,6 +89,37 @@ export default function ResultPage() {
       <div style={s.typeCard}>
         <p style={s.typeLabel}>あなたのタイプ</p>
         <div style={s.typeValue}><span>{emoji}</span><span>{result.type}</span></div>
+      </div>
+      <div style={{
+        border: `2px solid ${rankInfo.color}`,
+        borderRadius: 20,
+        padding: '20px',
+        marginBottom: 14,
+        textAlign: 'center' as const,
+        background: 'rgba(255,255,255,0.04)',
+        boxShadow: `0 0 24px ${rankInfo.color}40`,
+      }}>
+        <p style={{ fontSize: 12, color: '#D8B4FE', marginBottom: 12, letterSpacing: '0.08em' }}>SNS売上ポテンシャル診断ランク</p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 12 }}>
+          {['E','D','C','B','A','S','SS'].map(r => (
+            <div key={r} style={{
+              width: r === rankInfo.rank ? 48 : 30,
+              height: r === rankInfo.rank ? 48 : 30,
+              borderRadius: '50%',
+              background: r === rankInfo.rank ? rankInfo.color : 'rgba(255,255,255,0.06)',
+              border: r === rankInfo.rank ? `2px solid ${rankInfo.color}` : '1px solid rgba(255,255,255,0.1)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: r === rankInfo.rank ? 16 : 11,
+              fontWeight: r === rankInfo.rank ? 900 : 400,
+              color: r === rankInfo.rank ? '#000' : '#D8B4FE',
+              boxShadow: r === rankInfo.rank ? `0 0 20px ${rankInfo.color}` : 'none',
+              flexShrink: 0,
+            }}>
+              {r}
+            </div>
+          ))}
+        </div>
+        <p style={{ fontSize: 15, color: rankInfo.color, fontWeight: 700 }}>{rankInfo.message}</p>
       </div>
       <div style={s.section}>
         <h2 style={s.sectionTitle}>🔍 売上に繋がりにくい原因</h2>
