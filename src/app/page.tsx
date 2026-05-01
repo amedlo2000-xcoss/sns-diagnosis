@@ -82,21 +82,6 @@ export default function LandingPage() {
           ))}
         </div>
 
-        {/* 安心バッジ */}
-        <div style={{ display:'flex', gap:8, justifyContent:'center', marginBottom:32, flexWrap:'wrap' }}>
-          {['✅ 無料','✅ 10問以内','✅ スマホで完結'].map(t => (
-            <span key={t} style={{ background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.12)', padding:'8px 16px', borderRadius:100, fontSize:13, color:'#D8B4FE' }}>{t}</span>
-          ))}
-        </div>
-
-        {/* 再度CTA */}
-        <button
-          onClick={() => router.push('/diagnosis')}
-          style={{ display:'block', width:'100%', background:'linear-gradient(90deg,#FF4ECD,#8B5CF6)', color:'#fff', fontSize:18, fontWeight:800, padding:20, borderRadius:100, border:'none', cursor:'pointer', boxShadow:'0 0 30px rgba(255,78,205,0.4)' }}
-        >
-          ✦ 無料診断をはじめる →
-        </button>
-
         <footer style={{ marginTop:48, textAlign:'center', fontSize:11, color:'#D8B4FE' }}>© 2025 SNS売上診断</footer>
       </div>
     </main>
