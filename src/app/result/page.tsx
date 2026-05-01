@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import type { DiagnosisResult } from '@/lib/types';
 
 const LINE_URL = 'https://lin.ee/6fub10f';
-const CHAT_URL = 'https://lin.ee/6fub10f';
 const TYPE_EMOJI: Record<string,string> = { '導線不足タイプ':'🔗','投稿迷子タイプ':'🗺️','商品設計不足タイプ':'📦','継続困難タイプ':'⏳','自動化未導入タイプ':'⚙️' };
 
 export default function ResultPage() {
@@ -43,8 +42,7 @@ export default function ResultPage() {
     lineBtn: { display:'block', width:'100%', background:'#06C755', color:'#fff', fontSize:17, fontWeight:700, padding:18, borderRadius:12, textAlign:'center' as const },
     subCtaWrap: { display:'flex', flexDirection:'column' as const, gap:10 },
     subCtaLabel: { textAlign:'center' as const, fontSize:13, color:'#6B7A99' },
-    meetingBtn: { display:'block', width:'100%', background:'#06C755', color:'#fff', fontSize:15, fontWeight:700, padding:16, borderRadius:12, textAlign:'center' as const },
-    chatBtn: { display:'block', width:'100%', background:'#fff', color:'#1B2A4A', border:'2px solid #1B2A4A', fontSize:15, fontWeight:700, padding:15, borderRadius:12, textAlign:'center' as const },
+    meetingBtn: { display:'block', width:'100%', background:'#1B2A4A', color:'#fff', fontSize:15, fontWeight:700, padding:16, borderRadius:12, textAlign:'center' as const },
     retryWrap: { textAlign:'center' as const, marginTop:24 },
     retryLink: { background:'none', color:'#6B7A99', fontSize:13, textDecoration:'underline', cursor:'pointer', border:'none' } as React.CSSProperties,
     errCard: { margin:'60px auto', background:'#fff', border:'1px solid #E2EAF4', borderRadius:16, padding:'32px 20px', textAlign:'center' as const },
@@ -101,7 +99,6 @@ export default function ResultPage() {
       <div style={s.subCtaWrap}>
         <p style={s.subCtaLabel}>または</p>
         <a href={LINE_URL} target="_blank" rel="noopener noreferrer" style={s.meetingBtn}>💬 LINEで相談する</a>
-        <a href={CHAT_URL} target="_blank" rel="noopener noreferrer" style={s.chatBtn}>💬 チャットで問い合わせる</a>
       </div>
       <div style={s.retryWrap}>
         <button style={s.retryLink} onClick={()=>router.push('/diagnosis')}>もう一度診断する</button>
