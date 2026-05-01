@@ -20,7 +20,7 @@ export default function LandingPage() {
     trustBadges: { display: 'flex', gap: 8, flexWrap: 'wrap', margin: '28px 0', justifyContent: 'center' },
     badge2: { background: 'var(--color-blue-pastel)', color: 'var(--color-navy)', fontSize: 13, fontWeight: 600, padding: '8px 16px', borderRadius: 100 },
     ctaSection: { textAlign: 'center', marginTop: 8 },
-    ctaButton: { display: 'block', width: '100%', background: 'var(--color-navy)', color: '#fff', fontSize: 18, fontWeight: 700, padding: 20, borderRadius: 'var(--radius)', boxShadow: 'var(--shadow)', letterSpacing: '0.03em' },
+    ctaButton: { display: 'block', width: '100%', background: '#1B2A4A', color: '#FFFFFF', fontSize: 18, fontWeight: 700, padding: 20, borderRadius: 12, letterSpacing: '0.03em', border: 'none', cursor: 'pointer' },
     ctaNote: { fontSize: 12, color: 'var(--color-sub)', marginTop: 10 },
     footer: { marginTop: 60, textAlign: 'center', fontSize: 11, color: 'var(--color-sub)' },
   };
