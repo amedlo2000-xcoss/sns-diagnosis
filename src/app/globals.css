@@ -1,30 +1,31 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --color-bg: #0F1115;
-  --color-card: #1A1D24;
-  --color-accent: #D6FF00;
-  --color-pink: #FF9BEA;
-  --color-blue: #8BD3FF;
-  --color-text: #FFFFFF;
-  --color-sub: #A1A1AA;
-  --color-border: #2A2D35;
+  --bg: #12072B;
+  --pink: #FF4ECD;
+  --purple: #8B5CF6;
+  --blue: #38BDF8;
+  --lime: #D6FF00;
+  --text: #FFFFFF;
+  --sub: #D8B4FE;
+  --card-bg: rgba(18,7,43,0.65);
+  --card-border: rgba(255,255,255,0.18);
+  --radius-lg: 24px;
   --radius: 16px;
-  --shadow-neon: 0 0 20px rgba(214,255,0,0.15);
-  --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
+  --shadow-neon: 0 0 30px rgba(255,78,205,0.3);
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.5);
 }
 html { font-size: 16px; -webkit-text-size-adjust: 100%; }
 body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: 'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP','YuGothic','Yu Gothic',sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',sans-serif;
   line-height: 1.7;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 a { color: inherit; text-decoration: none; }
 button { cursor: pointer; border: none; font-family: inherit; }
-
-.ai-char-wrap { display: none; flex-shrink: 0; }
-@media (min-width: 540px) { .ai-char-wrap { display: block; } }
-
-.option-btn { transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease; }
-.option-btn:hover { border-color: #D6FF00 !important; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(214,255,0,0.12); }
+@keyframes fadeIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
+@keyframes glow { 0%,100% { box-shadow:0 0 20px rgba(255,78,205,0.4); } 50% { box-shadow:0 0 40px rgba(139,92,246,0.6); } }
+@keyframes shimmer { 0% { background-position:-200% 0; } 100% { background-position:200% 0; } }

@@ -19,21 +19,28 @@ const STEPS = [
 const initialForm: DiagnosisFormData = { sns:[], frequency:'', followers:'', hasProduct:'', salesStatus:'', biggestProblem:'', hasFunnel:'', timeAvailable:'', interestedInAutomation:'', nickname:'' };
 
 const css = {
-  main: { maxWidth:480, margin:'0 auto', padding:'0 20px 80px' } as React.CSSProperties,
-  progressWrap: { height:4, background:'#2A2D35', borderRadius:100, margin:'0 -20px', overflow:'hidden' } as React.CSSProperties,
-  progressBar: (w:number): React.CSSProperties => ({ height:'100%', background:'#D6FF00', width:`${w}%`, transition:'width 0.4s ease', boxShadow:'0 0 8px rgba(214,255,0,0.5)' }),
-  progressText: { textAlign:'right' as const, fontSize:12, color:'#A1A1AA', margin:'8px 0 20px' },
-  card: { background:'#1A1D24', border:'1px solid #2A2D35', borderRadius:16, padding:'28px 20px', boxShadow:'0 4px 24px rgba(0,0,0,0.4)' } as React.CSSProperties,
+  main: { maxWidth:480, margin:'0 auto', padding:'0 20px 80px', minHeight:'100vh', background:'linear-gradient(135deg,#12072B 0%,#1a0a3d 50%,#0d1a3d 100%)', position:'relative' as const },
+  progressWrap: { height:6, background:'rgba(255,255,255,0.1)', borderRadius:100, margin:'0 -20px', overflow:'hidden' } as React.CSSProperties,
+  progressBar: (w:number): React.CSSProperties => ({ height:'100%', background:'linear-gradient(90deg,#FF4ECD,#8B5CF6,#38BDF8)', width:`${w}%`, transition:'width 0.4s ease', boxShadow:'0 0 10px rgba(255,78,205,0.6)' }),
+  progressText: { textAlign:'right' as const, fontSize:12, color:'#D8B4FE', margin:'8px 0 20px' },
+  card: { background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.15)', borderRadius:24, padding:'28px 20px', backdropFilter:'blur(20px)', boxShadow:'0 8px 32px rgba(0,0,0,0.4)' } as React.CSSProperties,
   question: { fontSize:17, fontWeight:700, color:'#FFFFFF', lineHeight:1.55, marginBottom:24 } as React.CSSProperties,
   optionList: { listStyle:'none', display:'flex', flexDirection:'column' as const, gap:10 },
-  option: (sel:boolean): React.CSSProperties => ({ display:'block', width:'100%', textAlign:'left', padding:'15px 18px', borderRadius:12, border:`2px solid ${sel?'#D6FF00':'#2A2D35'}`, background:'#1A1D24', fontSize:15, color: sel?'#D6FF00':'#FFFFFF', fontWeight: sel?700:500, cursor:'pointer' }),
-  textInput: { width:'100%', padding:'15px 18px', borderRadius:12, border:'2px solid #2A2D35', background:'#0F1115', fontSize:16, color:'#FFFFFF', outline:'none', fontFamily:'inherit', boxSizing:'border-box' as const },
+  option: (sel:boolean): React.CSSProperties => ({
+    display:'block', width:'100%', textAlign:'left', padding:'15px 18px', borderRadius:14,
+    border:`2px solid ${sel?'#FF4ECD':'rgba(255,255,255,0.15)'}`,
+    background: sel?'rgba(255,78,205,0.15)':'rgba(255,255,255,0.05)',
+    fontSize:15, color: sel?'#FF4ECD':'#FFFFFF', fontWeight: sel?700:400,
+    transition:'all 0.2s', cursor:'pointer',
+    boxShadow: sel?'0 0 20px rgba(255,78,205,0.3)':'none',
+  }),
+  textInput: { width:'100%', padding:'15px 18px', borderRadius:14, border:'2px solid rgba(255,255,255,0.2)', fontSize:16, color:'#FFFFFF', outline:'none', fontFamily:'inherit', background:'rgba(255,255,255,0.08)', boxSizing:'border-box' as const },
   error: { marginTop:12, fontSize:13, color:'#FF9BEA', fontWeight:600 } as React.CSSProperties,
   nav: { display:'flex', gap:12, marginTop:20 } as React.CSSProperties,
-  backBtn: { flex:'0 0 auto', padding:'16px 20px', borderRadius:12, background:'#1A1D24', border:'1px solid #2A2D35', color:'#FFFFFF', fontSize:15, fontWeight:600, cursor:'pointer' } as React.CSSProperties,
-  nextBtn: (dis:boolean): React.CSSProperties => ({ flex:1, padding:16, borderRadius:12, background:'#D6FF00', color:'#0F1115', fontSize:17, fontWeight:700, opacity:dis?0.5:1, cursor:dis?'not-allowed':'pointer', border:'none', boxShadow: dis?'none':'0 0 16px rgba(214,255,0,0.2)' }),
+  backBtn: { flex:'0 0 auto', padding:'16px 20px', borderRadius:14, background:'rgba(255,255,255,0.08)', color:'#D8B4FE', fontSize:15, fontWeight:600, border:'1px solid rgba(255,255,255,0.15)', cursor:'pointer' } as React.CSSProperties,
+  nextBtn: (dis:boolean): React.CSSProperties => ({ flex:1, padding:16, borderRadius:14, background: dis?'rgba(255,255,255,0.1)':'linear-gradient(90deg,#FF4ECD,#8B5CF6)', color:'#fff', fontSize:17, fontWeight:700, opacity:dis?0.5:1, cursor:dis?'not-allowed':'pointer', border:'none', boxShadow: dis?'none':'0 0 20px rgba(255,78,205,0.4)' }),
   loadingWrap: { marginTop:32, textAlign:'center' as const, display:'flex', flexDirection:'column' as const, alignItems:'center', gap:16 },
-  loadingText: { fontSize:14, color:'#A1A1AA' } as React.CSSProperties,
+  loadingText: { fontSize:14, color:'#D8B4FE' } as React.CSSProperties,
 };
 
 export default function DiagnosisPage() {
