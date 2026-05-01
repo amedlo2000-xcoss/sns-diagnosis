@@ -101,7 +101,7 @@ export default function ResultPage() {
       }}>
         <p style={{ fontSize: 12, color: '#D8B4FE', marginBottom: 12, letterSpacing: '0.08em' }}>SNS売上ポテンシャル診断ランク</p>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 12 }}>
-          {['E','D','C','B','A','S','SS'].map(r => (
+          {['SS','S','A','B','C','D','E'].map(r => (
             <div key={r} style={{
               width: r === rankInfo.rank ? 48 : 30,
               height: r === rankInfo.rank ? 48 : 30,
